@@ -1,5 +1,5 @@
-import * as React from "react"
-import { GalleryVerticalEnd } from "lucide-react"
+import * as React from "react";
+// import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   Sidebar,
@@ -12,71 +12,69 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
-import AccountSignUp from "./AccountSignUp"
+} from "@/components/ui/sidebar";
+import AccountSignUp from "./AccountSignUp";
+import Image from "next/image";
+import Link from "next/link";
 
 // This is sample data.
 const data = {
   navMain: [
     {
-      title: "Getting Started",
+      title: "Home",
       url: "#",
       items: [
         {
-          title: "Installation",
-          url: "/dashboard/user",
+          title: "Dashboard",
+          url: "/",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Utilities",
       url: "#",
       items: [
         {
-          title: "Routing",
+          title: "Typography",
           url: "#",
         },
         {
-          title: "Data Fetching",
+          title: "Shadow",
           url: "#",
           isActive: true,
         },
-        
       ],
     },
     {
-      title: "API Reference",
+      title: "Auth",
       url: "#",
       items: [
         {
-          title: "Components",
+          title: "Login",
           url: "#",
         },
         {
-          title: "File Conventions",
+          title: "Register",
           url: "#",
         },
-        
       ],
     },
     {
-      title: "Architecture",
+      title: "Extra",
       url: "#",
       items: [
         {
-          title: "Accessibility",
+          title: "icons",
           url: "#",
         },
         {
-          title: "Fast Refresh",
+          title: "Sample Page",
           url: "#",
         },
-        
       ],
     },
-    
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -85,15 +83,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Documentation</span>
-                  <span className="">v1.0.0</span>
-                </div>
-              </a>
+              <Link href="/">
+                <Image
+                  src="/logo.svg"
+                  alt="Logo"
+                  className="object-contain aspect-[6.71]"
+                  width={174}
+                  height={26}
+                />
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -104,16 +102,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-medium">
+                  <div className="text-xs font-bold leading-7 text-gray-700 uppercase">
                     {item.title}
-                  </a>
+                  </div>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub className="ml-0 border-l-0 px-1.5">
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
+                          <a href={item.url} className="font-jakarta text-sm font-normal leading-[21.34px]">{item.title}</a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -127,5 +125,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <AccountSignUp />
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
