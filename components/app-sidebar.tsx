@@ -27,6 +27,9 @@ const data = {
         {
           title: "Dashboard",
           url: "/",
+          icon: "/svg/dashboard.svg",
+          
+          isActive: true,
         },
       ],
     },
@@ -37,11 +40,12 @@ const data = {
         {
           title: "Typography",
           url: "#",
+          icon: "/svg/typography.svg",
         },
         {
           title: "Shadow",
           url: "#",
-          isActive: true,
+          icon: "/svg/shadow.svg",
         },
       ],
     },
@@ -52,10 +56,12 @@ const data = {
         {
           title: "Login",
           url: "#",
+          icon: "/svg/login.svg",
         },
         {
           title: "Register",
           url: "#",
+          icon: "/svg/register.svg",
         },
       ],
     },
@@ -66,10 +72,12 @@ const data = {
         {
           title: "icons",
           url: "#",
+          icon: "/svg/icons.svg",
         },
         {
           title: "Sample Page",
           url: "#",
+          icon: "/svg/samplePage.svg",
         },
       ],
     },
@@ -111,7 +119,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url} className="font-jakarta text-sm font-normal leading-[21.34px]">{item.title}</a>
+                          <div >
+                            <Image
+                              src={item.icon}
+                              alt="typography icon"
+                              width={20}
+                              height={20}
+                              className="fill-current"
+                            />
+                            <a
+                              href={item.url}
+                              className="font-jakarta text-sm font-normal leading-[21.34px]"
+                            >
+                              {item.title}
+                            </a>
+                          </div>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
