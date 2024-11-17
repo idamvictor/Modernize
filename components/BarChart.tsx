@@ -37,11 +37,17 @@ export const BarchartComponent = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Multiple</CardTitle>
-        {/* Select component */}
-        <SelectComponent />
+        <div className="flex justify-between">
+          <CardTitle className="my-auto text-lg font-semibold leading-6 text-gray-700">
+            Bar Chart - Multiple
+          </CardTitle>
+          {/* Select component */}
+          <SelectComponent />
+        </div>
+        <div className="flex justify-end w-full">
         {/* Dropdown component */}
-        <DropdownMenuBar icon={Menu} />
+          <DropdownMenuBar icon={Menu} />
+        </div>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -54,10 +60,10 @@ export const BarchartComponent = () => {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <YAxis 
-              axisLine={false}     // Removes the Y-axis line
-              tickLine={false}     // Removes tick lines
-              tickMargin={10}      // Adds margin between ticks and labels
+            <YAxis
+              axisLine={false} // Removes the Y-axis line
+              tickLine={false} // Removes tick lines
+              tickMargin={10} // Adds margin between ticks and labels
               tickFormatter={(value) => `${value}`} // Formats the tick labels
             />
             <ChartTooltip

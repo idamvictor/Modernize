@@ -18,8 +18,8 @@ const AccountSignUp = () => {
         src={"/rocket.png"} 
         alt="Account illustration" 
         className="object-contain shrink-0 self-start max-w-full aspect-square w-[100px]" 
-        height={0}
-        width={0}
+        height={100}
+        width={100}
       />
     </section>
   );
