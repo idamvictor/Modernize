@@ -51,7 +51,7 @@ const DropdownMenuBar: React.FC<DropdownMenuBarProps> = ({ icon: Icon }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Icon />
+        <Icon className="w-[20px] h-[20px]" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
