@@ -1,76 +1,19 @@
-// import {
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "@/components/ui/table";
-
-// import React from "react";
-// import { Badge } from "./ui/badge";
-
-// const ProductPerformanceTable = () => {
-//   return (
-//     <Table>
-//       <TableHeader>
-//         <TableRow>
-//           <TableHead className="w-[100px]">Id</TableHead>
-//           <TableHead>Status</TableHead>
-//           <TableHead>Method</TableHead>
-//           <TableHead>Priority</TableHead>
-//           <TableHead className="text-right">Amount</TableHead>
-//         </TableRow>
-//       </TableHeader>
-//       <TableBody>
-//         <TableRow>
-//           <TableCell className="font-medium">1</TableCell>
-//           <TableCell>Paid</TableCell>
-//           <TableCell>Credit Card</TableCell>
-//           <TableCell>
-//             <Badge variant="default">Badge</Badge>
-//           </TableCell>
-//           <TableCell className="text-right">$250.00</TableCell>
-//         </TableRow>
-//         <TableRow>
-//           <TableCell className="font-medium">1</TableCell>
-//           <TableCell>Paid</TableCell>
-//           <TableCell>Credit Card</TableCell>
-//           <TableCell>
-//             <Badge variant="default">Badge</Badge>
-//           </TableCell>
-//           <TableCell className="text-right">$250.00</TableCell>
-//         </TableRow>
-//         <TableRow>
-//           <TableCell className="font-medium">1</TableCell>
-//           <TableCell>Paid</TableCell>
-//           <TableCell>Credit Card</TableCell>
-//           <TableCell>
-//             <Badge variant="default">Badge</Badge>
-//           </TableCell>
-//           <TableCell className="text-right">$250.00</TableCell>
-//         </TableRow>
-//         <TableRow>
-//           <TableCell className="font-medium">1</TableCell>
-//           <TableCell>Paid</TableCell>
-//           <TableCell>Credit Card</TableCell>
-//           <TableCell>
-//             <Badge variant="default">Badge</Badge>
-//           </TableCell>
-//           <TableCell className="text-right">$250.00</TableCell>
-//         </TableRow>
-//       </TableBody>
-//     </Table>
-//   );
-// };
-
-// export default ProductPerformanceTable;
-
-
 import React from 'react';
 
-const ProductPerformanceTable = () => {
-  const productData = [
+// Define types
+type Priority = 'Low' | 'Medium' | 'High' | 'Critical';
+
+interface Product {
+  id: number;
+  name: string;
+  role: string;
+  project: string;
+  priority: Priority;
+  budget: string;
+}
+
+const ProductPerformanceTable: React.FC = () => {
+  const productData: Product[] = [
     {
       id: 1,
       name: 'Sunil Joshi',
@@ -105,7 +48,7 @@ const ProductPerformanceTable = () => {
     }
   ];
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: Priority): string => {
     switch (priority) {
       case 'Low':
         return 'bg-blue-400';
