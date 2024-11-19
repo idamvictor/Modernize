@@ -38,7 +38,7 @@ export function AreaChartComponent() {
       <MonthlyEarnings />
 
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-20 w-[320px]">
+        <ChartContainer config={chartConfig} className="h-20 w-full">
           <AreaChart
             accessibilityLayer
             data={chartData}

@@ -5,8 +5,8 @@ import { Button } from './ui/button';
 export const MonthlyEarnings: React.FC = () => {
 
   return (
-    <section className="flex flex-col px-8 w-full max-md:px-5">
-      <div className="flex gap-5 justify-between items-start w-full">
+    <section className="flex flex-col px-8 py-4 w-full max-md:px-5">
+      <div className="flex gap-5 justify-between items-center w-full">
         <div className="flex flex-col mt-4 text-gray-700">
           <h2 className="text-lg font-semibold leading-6">
             Monthly Earnings

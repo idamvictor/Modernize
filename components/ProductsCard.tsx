@@ -146,7 +146,7 @@ const products: Product[] = [
   },
   {
     id: 2,
-    imageSrc: "/headset.jpg",
+    imageSrc: "/laptop.jpg",
     title: "MacBook Air Pro",
     currentPrice: "$900",
     originalPrice: "$650",
@@ -154,7 +154,7 @@ const products: Product[] = [
   },
   {
     id: 3,
-    imageSrc: "/headset.jpg",
+    imageSrc: "/lady.jpg",
     title: "Red Valvet Dress",
     currentPrice: "$200",
     originalPrice: "$150",
@@ -162,7 +162,7 @@ const products: Product[] = [
   },
   {
     id: 4,
-    imageSrc: "/headset.jpg",
+    imageSrc: "/teddy.jpg",
     title: "Cute Soft Teddybear",
     currentPrice: "$345",
     originalPrice: "$285",
@@ -216,7 +216,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           fill
           className="object-cover rounded-t-lg"
         />
-        <Button className="absolute top-4 right-4 rounded-full w-10 h-10 p-0 bg-sky-400 hover:bg-sky-500 drop-shadow-lg">
+        <Button className="absolute bottom-[-20px] right-4 rounded-full w-10 h-10 p-0 bg-sky-400 hover:bg-sky-500 drop-shadow-lg">
           $
         </Button>
       </div>

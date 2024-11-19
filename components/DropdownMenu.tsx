@@ -54,12 +54,10 @@ const DropdownMenuBar: React.FC<DropdownMenuBarProps> = ({ icon: Icon }) => {
         <Icon className="w-[20px] h-[20px]" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Download SVG</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem>Download SVG</DropdownMenuItem>
+        <DropdownMenuItem>Download SVG</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
