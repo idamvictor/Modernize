@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -12,8 +13,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { CheckboxWithText } from "./CheckboxWithText";
+import { FormEvent, useState } from "react";
+import { useLogin } from "@/hooks/createUser";
+import { navigate } from "@/app/(root)/actions";
 
 export function LoginForm() {
+const [username,setUserName]=useState("")
+const [password,setPassword]=useState("")
+
+const {handleGetSUser,loading} = useLogin()
+
+const handleLogin= async(e: FormEvent<HTMLFormElement>)=>{
+  e.preventDefault()
+  const data = await handleGetSUser(username, password);
+  if(data ) {
+    navigate("/")
+  }
+}
+
   return (
     <Card className="mx-auto max-w-sm w-[480px]">
       <CardHeader>
@@ -24,18 +41,21 @@ export function LoginForm() {
           Your Social Campaigns
         </CardDescription>
       </CardHeader>
+
+      <form onSubmit={handleLogin}>
+        
       <CardContent className="text-[#2A3547] text-[14px] font-normal">
         <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="name">UserName</Label>
-            <Input id="email" type="email" required />
+            <Input id="username" type="text" required value={username} onChange={(e)=>setUserName(e.target.value)}/>
           </div>
 
           <div className="grid gap-2">
             <div className="flex items-center">
               <Label htmlFor="password">Password</Label>
             </div>
-            <Input id="password" type="password" required />
+            <Input id="password" type="password" required value={password} onChange={(e)=>setPassword(e.target.value)} />
             <div>
               <div className="flex justify-between pt-4">
                 <CheckboxWithText />
@@ -48,7 +68,7 @@ export function LoginForm() {
               </div>
             </div>
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" disabled={loading}>
             <Link href='/'>Signin</Link>
           </Button>
           {/* <Button variant="outline" className="w-full">
@@ -62,6 +82,7 @@ export function LoginForm() {
           </Link>
         </div>
       </CardContent>
+            </form>
     </Card>
   );
 }
