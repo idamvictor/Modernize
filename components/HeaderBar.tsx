@@ -5,9 +5,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import DropdownMenuBar from "@/components/DropdownMenu";
 import { useAuth } from "@/context/TokenContext";
+import { useAdmin } from "@/context/AdminContext";
 
 function HeaderBar() {
+  const { admin } = useAdmin();
   const { accessToken, setAccessToken } = useAuth();
+
+  const initial = admin?.email.slice(0, 1).toUpperCase();
 
   const handleLogOut = () => {
     setAccessToken(null);
@@ -26,7 +30,13 @@ function HeaderBar() {
         )}
 
         {accessToken && <Button onClick={handleLogOut}>Logout</Button>}
-        <DropdownMenuBar icon={CircleUser} />
+        {admin?.email ? (
+          <p className="rounded-[50%] bg-pink-500 text-white  w-8 h-8 place-content-center text-center">
+            {initial}
+          </p>
+        ) : (
+          <DropdownMenuBar icon={CircleUser} />
+        )}
       </div>
     </div>
   );
