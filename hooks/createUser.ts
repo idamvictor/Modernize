@@ -24,7 +24,7 @@ export const useSubmitForm = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/v1/users",
+        "https://api-demo-8xxq.onrender.com/api/v1/users",
         {
           method: "POST",
           headers: {
@@ -77,7 +77,7 @@ export const useLogin = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/v1/auth/user/login",
+        "http://api-demo-8xxq.onrender.com/api/v1/auth/user/login",
         {
           method: "POST",
           headers: {
