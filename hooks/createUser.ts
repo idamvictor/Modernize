@@ -15,16 +15,16 @@ export const useSubmitForm = () => {
     if (password !== confirm && email === "") return;
 
     const requestBody = {
-      email: email,
-      password: password,
-      confirm_password: confirm,
+      "email": email,
+      "password": password,
+      "confirm_password": confirm,
     };
     console.log("Request Body:", requestBody);
 
     try {
       setLoading(true);
       const response = await fetch(
-        "https://api-demo-8xxq.onrender.com/api/v1/users",
+        "/api/v1/users",
         {
           method: "POST",
           headers: {
@@ -47,8 +47,8 @@ export const useSubmitForm = () => {
         setData(responseData);
         return responseData;
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -68,8 +68,8 @@ export const useLogin = () => {
     if (password === "" && username === "") return;
 
     const loginBody = {
-      username: username,
-      password: password,
+      "username": username,
+      "password": password,
     };
 
     console.log("Login Body:", JSON.stringify(loginBody));
@@ -77,7 +77,7 @@ export const useLogin = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://api-demo-8xxq.onrender.com/api/v1/auth/user/login",
+        "/api/v1/auth/user/login",
         {
           method: "POST",
           headers: {
