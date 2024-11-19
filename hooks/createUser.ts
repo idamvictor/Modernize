@@ -15,9 +15,9 @@ export const useSubmitForm = () => {
     if (password !== confirm && email === "") return;
 
     const requestBody = {
-      email: email,
-      password: password,
-      confirm_password: confirm,
+      "email": email,
+      "password": password,
+      "confirm_password": confirm,
     };
     console.log("Request Body:", requestBody);
 
@@ -68,8 +68,8 @@ export const useLogin = () => {
     if (password === "" && username === "") return;
 
     const loginBody = {
-      username: username,
-      password: password,
+      "username": username,
+      "password": password,
     };
 
     console.log("Login Body:", JSON.stringify(loginBody));
