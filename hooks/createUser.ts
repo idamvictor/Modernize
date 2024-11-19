@@ -47,8 +47,8 @@ export const useSubmitForm = () => {
         setData(responseData);
         return responseData;
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
