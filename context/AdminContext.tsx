@@ -8,12 +8,14 @@ import React, {
 } from "react";
 
 interface AdminData {
+  avatar: string;
+  created_at: string;
   email: string;
-  // Add other properties your admin object has
-  name?: string;
-  role?: string;
+  first_name: string;
   id?: string;
-  // etc...
+  is_active: boolean;
+  last_name: string;
+  role?: string;
 }
 
 interface AdminContextType {

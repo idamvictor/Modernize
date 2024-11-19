@@ -2,11 +2,21 @@ import { useAdmin } from "@/context/AdminContext";
 import { useAuth } from "@/context/TokenContext";
 import { useEffect, useState } from "react";
 
+interface AdminData {
+  avatar: string;
+  created_at: string;
+  email: string;
+  first_name: string;
+  id?: string;
+  is_active: boolean;
+  last_name: string;
+  role?: string;
+}
 // CREATE USER
 export const useSubmitForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [admin, setAdmin] = useState([]);
+  const [admin, setAdmin] = useState<AdminData | null>(null);
   const { setAdminProfile } = useAdmin();
 
   const submitForm = async (
