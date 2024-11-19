@@ -1,3 +1,4 @@
+import { useAdmin } from "@/context/AdminContext";
 import { useAuth } from "@/context/TokenContext";
 import { useEffect, useState } from "react";
 
@@ -5,7 +6,8 @@ import { useEffect, useState } from "react";
 export const useSubmitForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<any>(null);
+  const [admin, setAdmin] = useState([]);
+  const { setAdminProfile } = useAdmin();
 
   const submitForm = async (
     email: string,
@@ -15,24 +17,21 @@ export const useSubmitForm = () => {
     if (password !== confirm && email === "") return;
 
     const requestBody = {
-      "email": email,
-      "password": password,
-      "confirm_password": confirm,
+      email: email,
+      password: password,
+      confirm_password: confirm,
     };
     console.log("Request Body:", requestBody);
 
     try {
       setLoading(true);
-      const response = await fetch(
-        "/api/v1/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
+      const response = await fetch("/api/v1/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
 
       if (!response.ok) {
         const errorData = await response.json(); // Get error details from the response
@@ -43,8 +42,7 @@ export const useSubmitForm = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Success:", responseData);
-        setData(responseData);
+        setAdmin(responseData);
         return responseData;
       }
     } catch (error) {
@@ -54,7 +52,14 @@ export const useSubmitForm = () => {
     }
   };
 
-  return { submitForm, loading, error, data };
+  useEffect(() => {
+    if (admin) {
+      // Here you can perform actions that depend on userToken
+      setAdminProfile(admin);
+    }
+  }, [admin, setAdminProfile]);
+
+  return { submitForm, loading, error };
 };
 
 // LOG IN
@@ -68,24 +73,21 @@ export const useLogin = () => {
     if (password === "" && username === "") return;
 
     const loginBody = {
-      "username": username,
-      "password": password,
+      username: username,
+      password: password,
     };
 
     console.log("Login Body:", JSON.stringify(loginBody));
 
     try {
       setLoading(true);
-      const response = await fetch(
-        "/api/v1/auth/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginBody),
-        }
-      );
+      const response = await fetch("/api/v1/auth/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginBody),
+      });
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -96,7 +98,6 @@ export const useLogin = () => {
 
       if (response.ok) {
         const user = await response.json(); // Await the response.json() call
-        console.log("User:", user);
 
         if (user && user.access_token) {
           const token = user.access_token;
@@ -116,7 +117,6 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (userToken) {
-      console.log("Access Token Updated:", userToken);
       // Here you can perform actions that depend on userToken
       setAccessToken(userToken);
     }
