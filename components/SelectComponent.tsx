@@ -12,12 +12,12 @@ const SelectComponent = () => {
   return (
     <Select>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Theme" />
+        <SelectValue placeholder="March 2023" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem>
+        <SelectItem value="light">March 2023</SelectItem>
+        <SelectItem value="system">April 2023</SelectItem>
+        <SelectItem value="dark">May 2023</SelectItem>
       </SelectContent>
     </Select>
   );

@@ -46,7 +46,7 @@ export function PieChartComponent() {
         <YearlyBreakup />
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] w-[188px]"
+          className="mx-auto aspect-square max-h-[250px] w-[200px] overflow-hidden"
         >
           <PieChart>
             <ChartTooltip
@@ -57,7 +57,7 @@ export function PieChartComponent() {
               data={chartData}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={60}
+              innerRadius={50}
             />
           </PieChart>
         </ChartContainer>

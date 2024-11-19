@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Transaction {
   time: string;
@@ -8,8 +8,8 @@ interface Transaction {
 
 const transactions: Transaction[] = [
   {
-    time: '09:30 am',
-    color: 'blue-400',
+    time: "09:30 am",
+    color: "#5D87FF",
     content: (
       <>
         Payment received from <br /> John Doe of $385.90
@@ -17,21 +17,26 @@ const transactions: Transaction[] = [
     ),
   },
   {
-    time: '10:00 am',
-    color: 'sky-400',
+    time: "10:00 am",
+    color: "#49BEFF",
     content: (
       <>
         <span>New sale recorded</span>
         <br />
-        <a href="https://modernize-nextjs-free.vercel.app/" className="text-blue-400" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://modernize-nextjs-free.vercel.app/"
+          className="text-blue-400"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           #ML-3467
         </a>
       </>
     ),
   },
   {
-    time: '12:00 am',
-    color: 'teal-400',
+    time: "12:00 am",
+    color: "#13DEB9",
     content: (
       <>
         Payment was made of <br /> $64.95 to Michael
@@ -39,27 +44,32 @@ const transactions: Transaction[] = [
     ),
   },
   {
-    time: '09:30 am',
-    color: 'amber-400',
+    time: "09:30 am",
+    color: "#FFAE1F",
     content: (
       <>
         <span>New sale recorded</span>
         <br />
-        <a href="https://modernize-nextjs-free.vercel.app/" className="text-blue-400" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://modernize-nextjs-free.vercel.app/"
+          className="text-blue-400"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           #ML-3467
         </a>
       </>
     ),
   },
   {
-    time: '09:30 am',
-    color: 'red-400',
-    content: 'New arrival recorded',
+    time: "09:30 am",
+    color: "#FA896B",
+    content: "New arrival recorded",
   },
   {
-    time: '12:00 am',
-    color: 'teal-400',
-    content: 'Payment Received',
+    time: "12:00 am",
+    color: "#13DEB9",
+    content: "Payment Received",
   },
 ];
 
@@ -69,7 +79,7 @@ const RecentTransactions: React.FC = () => {
       <h2 className="self-start text-lg font-semibold leading-6 text-gray-700">
         Recent Transactions
       </h2>
-      <div className="flex flex-col mt-7 w-full">
+      <div className="flex flex-col mt-1 w-full">
         {transactions.map((transaction, index) => (
           <TransactionItem
             key={index}
@@ -87,8 +97,6 @@ const RecentTransactions: React.FC = () => {
 
 export default RecentTransactions;
 
-
-
 interface TransactionItemProps {
   time: string;
   color: string;
@@ -96,16 +104,23 @@ interface TransactionItemProps {
   children: React.ReactNode;
 }
 
-const TransactionItem: React.FC<TransactionItemProps> = ({ time, color, isLast, children }) => {
+const TransactionItem: React.FC<TransactionItemProps> = ({
+  time,
+  color,
+  isLast,
+  children,
+}) => {
   return (
     <div className="flex gap-4 items-start px-4 pt-3 w-full text-sm leading-5 text-gray-700 min-h-[70px]">
-      <div className="flex flex-col text-right">
-        <div className="flex gap-4">
+      <div className="flex flex-col">
+        <div className="flex gap-2">
           <div>{time}</div>
-          <div className={`flex shrink-0 self-start w-3 h-3 rounded-md border-2 border-${color} border-solid`} />
+          <div
+            className={`flex shrink-0 self-start w-3 h-3 rounded-md border-2 !border-${color} border-solid`}
+          />
         </div>
         {!isLast && (
-          <div className="flex shrink-0 self-end mt-3 w-px bg-zinc-100 h-[35px] max-md:mr-1.5" />
+          <div className={`flex shrink-0 self-end mt-3 w-[3px] !text-${color} h-[25px] max-md:mr-1.5`} />
         )}
       </div>
       <div>{children}</div>

@@ -1,4 +1,3 @@
-
 import { AppSidebar } from "@/components/app-sidebar";
 import HeaderBar from "@/components/HeaderBar";
 import {
@@ -6,7 +5,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-
 
 export default function RootLayout({
   children,
@@ -21,11 +19,11 @@ export default function RootLayout({
         } as React.CSSProperties
       }
     >
-      <AppSidebar />
+      <AppSidebar  />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 px-4">
           <SidebarTrigger className="-ml-1 lg:hidden md:hidden" />
-          <HeaderBar/>
+          <HeaderBar />
         </header>
         {children}
       </SidebarInset>
